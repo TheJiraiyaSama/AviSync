@@ -27,11 +27,11 @@ const CButton = ({
             break;
         case "outlined":
             classNames =
-                "border-secondary text-secondary inline-flex  items-center justify-center gap-2 rounded-sm py-[15px] text-secondary fill-secondary";
+                "border-2 border-secondary inline-flex  items-center justify-center gap-2 rounded-sm py-[15px] text-secondary fill-secondary body-2_semibold";
             break;
         case "accent":
             classNames =
-                "border border-tertiary bg-accent text-tertiary text-tertiary inline-flex  items-center justify-center gap-2 rounded-sm py-[15px] fill-tertiary";
+                "border border-tertiary bg-accent text-secondary inline-flex  items-center justify-center gap-2 rounded-sm py-[15px] fill-tertiary body-2_semibold";
             break;
     }
     if (halfWidth) classNames += " min-w-[150px] max-w-[150px]";

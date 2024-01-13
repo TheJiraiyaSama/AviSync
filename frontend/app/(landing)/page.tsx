@@ -23,12 +23,12 @@ const page = () => {
                     executes contracts, streamlining transactions within the
                     aviation ecosystem.
                 </p>
-                <div className="mt-8 flex space-x-1">
+                <div className="mt-8 flex space-x-5">
                     <CButton asChild>
-                        <Link href={"/internal"}>Learn More</Link>
+                        <Link href={"/internal/about"}>Learn More</Link>
                     </CButton>
                     <CButton cVariant="outlined" asChild>
-                        <Link href={"/"}>Sign in</Link>
+                        <Link href={"/sign"}>Sign Up</Link>
                     </CButton>
                 </div>
             </div>

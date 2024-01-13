@@ -13,13 +13,13 @@ import {
 type NavBarProps = {
     noTopBorderDecoration?: boolean;
     loggedInNavBar?: boolean;
-    onlyLogo?: boolean;
+    LandingNavBar?: boolean;
 };
 
 const NavBar = ({
     loggedInNavBar = false,
     noTopBorderDecoration = false,
-    onlyLogo = false,
+    LandingNavBar = false,
 }: NavBarProps) => {
     return (
         <nav className="fixed z-50 w-full">
@@ -40,7 +40,7 @@ const NavBar = ({
                         height={100}
                         alt="AviSync"
                     />
-                    {!onlyLogo ? (
+                    {!LandingNavBar ? (
                         <p className="heading-1 text-secondary">
                             Avi <span className="text-accent">Sync</span>
                         </p>
@@ -55,7 +55,9 @@ const NavBar = ({
                             </Link>
                         ))}
                         {/* Login Button */}
-                        <CButton halfWidth>Sign In</CButton>
+                        {!LandingNavBar ? (
+                            <CButton halfWidth>Sign In</CButton>
+                        ) : null}
                     </div>
                 ) : (
                     <div className="flex-between body-1 gap-12 capitalize">
