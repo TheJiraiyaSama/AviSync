@@ -15,7 +15,7 @@ const page = () => {
             </div>
             <div className="flex flex-wrap gap-8 justify-center">
                 {airplaneName.map((name) => (
-                    <CCard key={name} label={name} />
+                    <CCard key={name} label={name} owner />
                 ))}
             </div>
         </div>
