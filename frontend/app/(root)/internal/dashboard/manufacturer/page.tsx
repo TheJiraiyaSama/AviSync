@@ -1,6 +1,8 @@
 import { CButton } from "@/components/custom";
+import CListItem from "@/components/custom/CListItem";
 import { FilterListIcon } from "@/components/icons";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { airplaneName } from "@/constants";
 import Image from "next/image";
 import React from "react";
 
@@ -44,7 +46,11 @@ const page = () => {
                         Register New
                     </CButton>
                 </div>
-                <ScrollArea></ScrollArea>
+                <ScrollArea className=" mt-4 h-72 rounded-md">
+                    {airplaneName.map((name) => (
+                        <CListItem key={name} label={name} />
+                    ))}
+                </ScrollArea>
             </div>
         </div>
     );

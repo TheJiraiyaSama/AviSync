@@ -10,7 +10,6 @@ const layout = ({ children }: { children: ReactNode }) => {
                     <div className="mx-auto w-full max-w-7xl">{children}</div>
                 </section>
             </div>
-            Toaster
         </main>
     );
 };
