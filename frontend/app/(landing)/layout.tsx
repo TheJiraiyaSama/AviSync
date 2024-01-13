@@ -7,10 +7,11 @@ const layout = ({ children }: { children: ReactNode }) => {
             <NavBar onlyLogo />
             <div className="flex">
                 <section className="flex min-h-screen flex-1 flex-col px-6 pb-6 pt-36 max-md:pb-14 sm:px-14">
-                    <div className="mx-auto w-full max-w-5xl">{children}</div>
+                    <div className="mx-auto my-8 w-full max-h-full">
+                        {children}
+                    </div>
                 </section>
             </div>
-            Toaster
         </main>
     );
 };
