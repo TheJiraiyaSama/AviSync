@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 "use client";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
@@ -16,6 +17,9 @@ import {
     FormMessage,
 } from "@/components/ui/form";
 import CInput from "@/components/custom/Inputs/CInput";
+import CSelect from "@/components/custom/Inputs/CSelect";
+import { userRoles } from "@/constants";
+import { SelectValue } from "@radix-ui/react-select";
 
 const formSchema = z.object({
     name: z.string().min(2, {
@@ -64,7 +68,7 @@ const page = () => {
                     <p className="heading-1 text-primary mb-12">
                         Create Account
                     </p>
-                    <div>
+                    <div className="flex-center flex-col">
                         <Form {...form}>
                             <form
                                 onSubmit={form.handleSubmit(onSubmit)}
@@ -109,10 +113,16 @@ const page = () => {
                                         <FormItem>
                                             {/* <FormLabel>Username</FormLabel> */}
                                             <FormControl>
-                                                <CInput
-                                                    fieldSize={"half"}
-                                                    placeholder="Role"
-                                                    {...field}
+                                                <CSelect
+                                                    // inputLabel="Role"
+                                                    selectTriggerProps={{
+                                                        fieldSize: "half",
+                                                    }}
+                                                    selectItems={userRoles}
+                                                    selectValueProps={{
+                                                        placeholder:
+                                                            "Enter Role",
+                                                    }}
                                                 />
                                             </FormControl>
                                         </FormItem>
@@ -120,7 +130,7 @@ const page = () => {
                                 />
                             </form>
                             <CButton type="submit" asChild cVariant="accent">
-                                <Link href="/sign">Sign Up with Metamask</Link>
+                                <Link href="">Sign Up with Metamask</Link>
                             </CButton>
                         </Form>
                     </div>

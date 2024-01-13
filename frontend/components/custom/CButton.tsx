@@ -39,7 +39,7 @@ const CButton = ({
     if (icon) classNames += " gap-[10px] ";
     return (
         <Button
-            className={classNames}
+            className={`${classNames} ${className}`}
             variant={cVariant === "outlined" ? "outline" : null}
             {...props}
         >
