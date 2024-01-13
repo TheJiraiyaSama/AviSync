@@ -3,49 +3,53 @@
 @tailwind utilities;
 
 @layer utilities {
-  .heading-1 {
-    @apply font-anton text-4xl tracking-[0.22rem];
-  }
+    .heading-1 {
+        @apply font-anton text-4xl tracking-[0.22rem];
+    }
 
-  .heading-2 {
-    @apply font-anton text-3xl tracking-[0.22rem];
-  }
+    .heading-2 {
+        @apply font-anton text-3xl tracking-[0.22rem];
+    }
 
-  .heading-3 {
-    @apply font-anton text-2xl tracking-[0.22rem];
-  }
+    .heading-3 {
+        @apply font-anton text-2xl tracking-[0.22rem];
+    }
 
-  .body-1 {
-    @apply font-lato text-lg;
-  }
+    .heading-4 {
+        @apply font-anton text-xl tracking-[0.22rem];
+    }
 
-  .body-1_semibold {
-    @apply font-lato text-lg font-bold;
-  }
+    .body-1 {
+        @apply font-lato text-lg;
+    }
 
-  .body-1_bold {
-    @apply font-lato text-lg font-black;
-  }
-  .body-2 {
-    @apply font-lato text-[1rem];
-  }
+    .body-1_semibold {
+        @apply font-lato text-lg font-bold;
+    }
 
-  .body-2_semibold {
-    @apply font-lato text-[1rem] font-bold;
-  }
+    .body-1_bold {
+        @apply font-lato text-lg font-black;
+    }
+    .body-2 {
+        @apply font-lato text-[1rem];
+    }
 
-  .body-2_bold {
-    @apply font-lato text-[1rem] font-black;
-  }
-  .body-3 {
-    @apply font-lato text-sm;
-  }
+    .body-2_semibold {
+        @apply font-lato text-[1rem] font-bold;
+    }
 
-  .body-3_semibold {
-    @apply font-lato text-sm font-bold;
-  }
+    .body-2_bold {
+        @apply font-lato text-[1rem] font-black;
+    }
+    .body-3 {
+        @apply font-lato text-sm;
+    }
 
-  .body-3_bold {
-    @apply font-lato text-sm font-black;
-  }
+    .body-3_semibold {
+        @apply font-lato text-sm font-bold;
+    }
+
+    .body-3_bold {
+        @apply font-lato text-sm font-black;
+    }
 }
