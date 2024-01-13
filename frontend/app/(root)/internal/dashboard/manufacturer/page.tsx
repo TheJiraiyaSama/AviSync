@@ -1,5 +1,6 @@
 import { CButton } from "@/components/custom";
 import { FilterListIcon } from "@/components/icons";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import React from "react";
 
@@ -43,7 +44,7 @@ const page = () => {
                         Register New
                     </CButton>
                 </div>
-                
+                <ScrollArea></ScrollArea>
             </div>
         </div>
     );
