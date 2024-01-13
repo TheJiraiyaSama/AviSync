@@ -6,12 +6,13 @@ import NavBar from '@/components/layout/navbar/NavBar';
 
 const anton = Anton({
   weight: ['400'],
-  variable: '--font-anton',
   subsets: ['latin'],
+  variable: '--font-anton',
 });
 const lato = Lato({
   weight: ['400', '700', '900'],
   subsets: ['latin'],
+  variable: '--font-lato',
 });
 
 export const metadata: Metadata = {
@@ -26,7 +27,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
       <body
-        className={`${anton.className} ${lato.className} bg-primary text-secondary`}>
+        className={`${anton.variable} ${lato.variable} bg-primary text-secondary`}>
         {children}
       </body>
     </html>

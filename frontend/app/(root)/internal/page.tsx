@@ -14,8 +14,12 @@ const selectIs: ISelectItem[] = [
 const page = () => {
   return (
     <div>
-      page
-      <CInput inputLabel='test' placeholder='Enter somethign' fieldSize={"half"}/>
+      <p className="heading-1">PAPS</p>
+      <CInput
+        inputLabel="test"
+        placeholder="Enter somethign"
+        fieldSize={'half'}
+      />
     </div>
   );
 };
