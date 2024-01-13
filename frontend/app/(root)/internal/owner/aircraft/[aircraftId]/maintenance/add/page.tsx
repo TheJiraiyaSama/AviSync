@@ -619,9 +619,7 @@ const Page = () => {
             </div>
           </section>
           <div className="flex-center">
-            <CButton
-              cVariant={"accent"}
-              onClick={() => console.log(form.getValues())}>
+            <CButton cVariant={"accent"} type="submit">
               Save
             </CButton>
           </div>
