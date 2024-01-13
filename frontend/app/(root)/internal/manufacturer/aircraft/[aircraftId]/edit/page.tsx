@@ -3,152 +3,118 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
 import { CButton } from "@/components/custom";
-import Link from "next/link";
-import React, { useState } from 'react';
-import{
+import { useEffect, useState } from "react";
+import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-// import { Input } from "@/components/ui/input"
 import CInput from "@/components/custom/Inputs/CInput";
+import fieldList, { formSchema } from "../../add/fieldList";
+import Image from "next/image";
+import getImageData from "@/lib/get_image_data";
+import { Input } from "@/components/ui/input";
 
-
-const formSchema = z.object({
-    serialNumber: z.string().min(2, {
-        message: "Serial Number must be at least 2 characters.",
-    }),
-    aircraftName: z.string().min(2, {
-        message: "AirCraft name must be at least 2 characters.",
-    }),
-    engineNumber: z.string().min(2, {
-        message: "Engine Number must be at least 2 characters.",
-    }),
-    manufacturePrice: z.string().min(6, {
-        message: "Manufacture Price must be at least 6 characters.",
-    }),
-    model: z.string().min(2, {
-        message: "Model must be at least 2 characters.",
-    }),
-    
-});
-const onSubmit = () => {
-  console.log("hello");
-};
-const page = () => {
-  // eslint-disable-next-line react-hooks/rules-of-hooks
+const Page = () => {
   const form = useForm<z.infer<typeof formSchema>>({
-      resolver: zodResolver(formSchema),
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      aircraftName: "Hello",
+      engineNumber: "asdasd",
+      image: "",
+      manufacturePrice: 2233,
+      serialNumber: "asdasd",
+    },
   });
-  
+  const [preview, setPreview] = useState("");
+
+  const onSubmit = (data: z.infer<typeof formSchema>) => {
+    console.log({ data });
+  };
+
   return (
-    <div className="justify-between">
-        <p className={"heading-1"}>Aircraft Add/Edit</p>
+    <section>
+      <p className={"heading-1 mb-20"}>Edit Aircraft</p>
+      <div>
         <div>
-        <div>
-                    <Form {...form}>
-                        <form
-                            onSubmit={form.handleSubmit(onSubmit)}
-                            className="mb-8 space-y-4"
-                        >
-                            <FormField
-                                control={form.control}
-                                name="serialNumber"
-                                render={({ field }) => (
-                                    <FormItem className="flex-col pb-6 pt-10 ">
-                                        { <FormLabel>Serial Number</FormLabel> }
-                                        <FormControl >
-                                            <CInput
-                                                fieldSize={"default"}
-                                                placeholder="Placeholder"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="aircraftName"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        { <FormLabel>Aircraft number</FormLabel> }
-                                        <FormControl>
-                                            <CInput
-                                                fieldSize={"default"}
-                                                placeholder="Placeholder"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="engineNumber"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        { <FormLabel>Engine number</FormLabel> }
-                                        <FormControl>
-                                            <CInput
-                                                fieldSize={"default"}
-                                                placeholder="Placeholder"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="manufacturePrice"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        { <FormLabel>Manufacture Price</FormLabel> }
-                                        <FormControl>
-                                            <CInput
-                                                fieldSize={"default"}
-                                                placeholder="Placeholder"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-                            <FormField
-                                control={form.control}
-                                name="model"
-                                render={({ field }) => (
-                                    <FormItem>
-                                        { <FormLabel>Model</FormLabel> }
-                                        <FormControl>
-                                            <CInput
-                                                fieldSize={"default"}
-                                                placeholder="Placeholder"
-                                                {...field}
-                                            />
-                                        </FormControl>
-                                    </FormItem>
-                                )}
-                            />
-                        </form>
-                        <div className="pb-56"></div>
-                        <div className="flex justify-end space-x-10 pb-10">
-                        <CButton cVariant="default" className="flex items-end">
-                        Upload
-                        </CButton>
-                        <CButton type="submit" asChild cVariant="accent">
-                            <Link href="/xyz">Save</Link>
-                        </CButton>
-                        </div>
-                    </Form>
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex gap-8">
+              {/* Input Fields */}
+              <div className="flex basis-1/2 flex-col items-start justify-start gap-10">
+                {fieldList.map((fieldItem) => (
+                  <FormField
+                    key={fieldItem.name}
+                    control={form.control}
+                    name={fieldItem.name as any}
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>{fieldItem.label}</FormLabel>
+                        <FormControl>
+                          <Input
+                            placeholder={fieldItem.placeHolder}
+                            {...field}
+                          />
+                        </FormControl>
+                      </FormItem>
+                    )}
+                  />
+                ))}
+              </div>
+              {/* Image and Buttons */}
+              <div className="flex-center basis-1/2 flex-col pl-40">
+                <div className="relative mb-10 h-[400px] w-[400px]">
+                  {preview.length > 1 ? (
+                    <Image
+                      src={preview}
+                      // width={400}
+                      // height={400}
+                      layout="fill"
+                      objectFit="contain"
+                      alt="Airplane"
+                    />
+                  ) : (
+                    <p className="flex-center h-full w-full rounded bg-secondary text-primary">
+                      Upload Image
+                    </p>
+                  )}
                 </div>
+                <div className="flex-center flex-col gap-11">
+                  <FormField
+                    control={form.control}
+                    name={"image"}
+                    render={({ field: { onChange, ...rest } }) => (
+                      <FormItem>
+                        <FormControl>
+                          <Input
+                            placeholder={"Upload File"}
+                            type="file"
+                            fieldSize="half"
+                            className="text-center text-primary file:hidden"
+                            onChange={(event) => {
+                              const { files, displayUrl } = getImageData(event);
+                              setPreview(displayUrl);
+                              onChange(event);
+                            }}
+                            {...rest}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+                  <CButton type="submit" asChild cVariant="accent">
+                    Save
+                  </CButton>
                 </div>
-            </div>
-);
-}
-export default page;
+              </div>
+            </form>
+          </Form>
+        </div>
+      </div>
+    </section>
+  );
+};
+export default Page;

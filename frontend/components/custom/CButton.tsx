@@ -31,7 +31,7 @@ const CButton = ({
             break;
         case "accent":
             classNames =
-                "border border-tertiary bg-accent text-secondary inline-flex  items-center justify-center gap-2 rounded-sm py-[15px] fill-tertiary body-2_semibold";
+                "border border-tertiary bg-accent text-tertiary inline-flex  items-center justify-center gap-2 rounded-sm py-[15px] fill-tertiary body-2_semibold";
             break;
     }
     if (halfWidth) classNames += " min-w-[150px] max-w-[150px]";
