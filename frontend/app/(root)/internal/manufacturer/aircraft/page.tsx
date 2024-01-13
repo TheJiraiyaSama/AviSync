@@ -8,7 +8,7 @@ const page = () => {
     return (
         <div>
             <div className="mb-12 flex flex-row justify-between">
-                <p className="heading-1">Fancy something New?</p>
+                <p className="heading-1">Take a look at your Work</p>
                 <CButton halfWidth icon={<FilterListIcon />}>
                     Filter
                 </CButton>
