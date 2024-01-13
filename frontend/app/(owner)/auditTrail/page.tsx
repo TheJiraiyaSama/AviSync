@@ -1,17 +1,25 @@
-import React from 'react'
+import { Audit, columns } from "./columns"
+import { DataTable } from "./data-table"
 
-const page = () => {
+async function getData(): Promise<Audit[]> {
+  // Fetch data from your API here.
+  return [
+    {
+      id: "728ed52f",
+      amount: 100,
+      status: "pending",
+      email: "m@example.com",
+    },
+    // ...
+  ]
+}
+
+export default async function DemoPage() {
+  const data = await getData()
+
   return (
-    <div>
-    <div className='heading-1'>Audit Trail</div>
-    <div className='flex space-x-60'>
-        <div className='p-10 tex'>User</div>
-        <div className='p-10'>Wallet Address</div>
-        <div className='p-10'>Action</div>
-        <div className='p-10'>TimeStamp</div>
-    </div>
+    <div className="container mx-auto py-10">
+      <DataTable columns={columns} data={data} />
     </div>
   )
 }
-
-export default page
