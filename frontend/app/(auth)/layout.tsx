@@ -1,4 +1,4 @@
-import NavBar from "@/components/layout/navbar/NavBar";
+gitimport NavBar from "@/components/layout/navbar/NavBar";
 import Image from "next/image";
 import React, { ReactNode } from "react";
 
