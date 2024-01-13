@@ -1,4 +1,4 @@
 export interface ISelectItem {
-  value: string,
+  value: string | number,
   name: string,
 }

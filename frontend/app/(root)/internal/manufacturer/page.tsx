@@ -4,6 +4,7 @@ import { FilterListIcon } from "@/components/icons";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { airplaneName } from "@/constants";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const page = () => {
@@ -40,8 +41,8 @@ const page = () => {
           <CButton halfWidth icon={<FilterListIcon />}>
             Filter
           </CButton>
-          <CButton halfWidth cVariant="accent">
-            Register New
+          <CButton halfWidth cVariant="accent" asChild>
+            <Link href="/internal/manufacturer/aircraft/add">Register New</Link>
           </CButton>
         </div>
         <ScrollArea className="mt-4 h-72 rounded-md">

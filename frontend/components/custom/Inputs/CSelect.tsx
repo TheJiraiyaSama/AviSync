@@ -20,32 +20,35 @@ interface CSelectProps {
   selectItems: ISelectItem[];
 }
 
-const CSelect = ({ inputLabel, selectItems, ...props }: CSelectProps) => {
-  return (
-    <div className="grid w-full max-w-sm items-center gap-4">
-      {inputLabel && inputLabel.length > 1 ? (
-        <Label htmlFor={props.selectTriggerProps?.id}>{inputLabel}</Label>
-      ) : null}
-      <Select {...props.selectProps}>
-        <SelectTrigger {...props.selectTriggerProps}>
-          <SelectValue {...props.selectValueProps} />
-        </SelectTrigger>
-        <SelectContent
-          className={`bg-secondary ${props.selectContentProps?.className}`}
-          {...props.selectContentProps}>
-          {selectItems.map((item) => (
-            <SelectItem
-              className={`text-primary ${props.commonSelectItemProps?.className}`}
-              key={item.value}
-              value={item.value}
-              {...props.commonSelectItemProps}>
-              {item.name}
-            </SelectItem>
-          ))}
-        </SelectContent>
-      </Select>
-    </div>
-  );
-};
+const CSelect = React.forwardRef<HTMLInputElement, CSelectProps>(
+  ({ inputLabel, selectItems, ...props }, ref) => {
+    return (
+      <div className="grid w-full max-w-sm items-center gap-4">
+        {inputLabel && inputLabel.length > 1 ? (
+          <Label htmlFor={props.selectTriggerProps?.id}>{inputLabel}</Label>
+        ) : null}
+        <Select {...props.selectProps}>
+          <SelectTrigger {...props.selectTriggerProps}>
+            <SelectValue {...props.selectValueProps} />
+          </SelectTrigger>
+          <SelectContent
+            className={`bg-secondary ${props.selectContentProps?.className}`}
+            {...props.selectContentProps}>
+            {selectItems.map((item) => (
+              <SelectItem
+                className={`text-primary ${props.commonSelectItemProps?.className}`}
+                key={item.value}
+                value={item.value.toString()}
+                {...props.commonSelectItemProps}>
+                {item.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    );
+  }
+);
 
+CSelect.displayName = "CSelect";
 export default CSelect;
