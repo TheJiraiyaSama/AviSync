@@ -52,7 +52,7 @@ contract AircraftFactory {
                 string memory _______,
                 string memory ________
             ) = aircrafts[i].info();
-            if (currentOwner == msg.sender) {
+            if (address(currentOwner) == address(msg.sender)) {
                 myNFTs.push(address(aircrafts[i]));
             }
         }
@@ -61,7 +61,7 @@ contract AircraftFactory {
 }
 
 //This contract is responsible for factory, it will mint the NFT and send it to the manufacture
-contract AircraftNFT is ERC721Base{
+contract AircraftNFT is ERC721Base {
     uint myTokenId;
 
     struct Aircraft {
@@ -99,7 +99,8 @@ contract AircraftNFT is ERC721Base{
         string memory _engineNumber,
         uint _manufacturePrice,
         string memory _imageUrl
-    ) ERC721Base(
+    )
+        ERC721Base(
             _defaultAdmin,
             _name,
             _symbol,
@@ -150,7 +151,7 @@ contract AircraftNFT is ERC721Base{
         authorizedEditors[_editor] = false;
     }
 
-    function placeBid(uint256 _amount) external higherBidding(_amount) payable {
+    function placeBid(uint256 _amount) external payable higherBidding(_amount) {
         require(msg.sender != owner(), "Owner cannot place bids");
         // If there was a previous highest bidder, refund their bid
         if (highestBidder != address(0)) {
@@ -171,12 +172,11 @@ contract AircraftNFT is ERC721Base{
         require(highestBidder != address(0), "No bids have been placed yet");
 
         // Transfer the token to the owner
-        
+
         highestBidder.transfer(highestBid);
         emit BidAccepted(highestBidder, highestBid);
 
-        
-        transferFrom(info.currentOwner, msg.sender, myTokenId);
+        // transferFrom(info.currentOwner, msg.sender, myTokenId);
         info.currentOwner = highestBidder;
         info.lastResalePrice = highestBid;
         owners.push(msg.sender);
@@ -206,7 +206,9 @@ contract AircraftNFT is ERC721Base{
         return (highestBidder, highestBid);
     }
 
-    function putOnMarket(uint _startAmount) public onlyAllowedOperator(msg.sender) {
+    function putOnMarket(
+        uint _startAmount
+    ) public onlyAllowedOperator(msg.sender) {
         highestBid = _startAmount;
         info.marketStatus = "ON_MARKET";
     }
