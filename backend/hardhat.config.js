@@ -29,7 +29,9 @@ module.exports = {
       chainId: 324,
       zksync: true,
     },
+    
   },
+  defaultNetwork: 'ganache',
   paths: {
     artifacts: './artifacts-zk',
     cache: './cache-zk',
@@ -41,7 +43,7 @@ module.exports = {
     settings: {
       optimizer: {
         enabled: true,
-        runs: 200,
+        runs: 1,
       },
     },
   },
