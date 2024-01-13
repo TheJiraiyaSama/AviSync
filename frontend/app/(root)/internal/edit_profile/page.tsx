@@ -1,17 +1,8 @@
 import { CButton } from "@/components/custom";
 import CInput from "@/components/custom/Inputs/CInput";
 import { FormField } from '@/components/ui/form';
-import * as z from "zod"
-import React, { use } from 'react'
-// eslint-disable-next-line no-unused-expressions
-"use client"
+import React from 'react'
 
- 
-const formSchema = z.object({
-  username: z.string().min(2, {
-    message: "Username must be at least 2 characters.",
-  }).max(50, { message: "Username cannot exceed 50 characters"}),
-})
 export const page = () => {
   return (
     <div className="justify-between">
