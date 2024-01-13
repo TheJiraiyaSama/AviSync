@@ -15,7 +15,7 @@ const page = () => {
   return (
     <div>
       page
-      
+      <CInput inputLabel='test' placeholder='Enter somethign' fieldSize={"half"}/>
     </div>
   );
 };

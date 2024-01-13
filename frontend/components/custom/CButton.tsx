@@ -6,7 +6,7 @@ import { FilterListIcon } from '../icons';
 
 interface CButtonProps extends ButtonProps {
   cVariant?: 'default' | 'outlined' | 'accent';
-  icon?: string | StaticImport; // Pass icon path or icon as react node
+  icon?: ReactNode; // Pass icon path or icon as react node
   halfWidth?: boolean;
 }
 
@@ -41,13 +41,7 @@ const CButton = ({
       className={classNames}
       variant={cVariant === 'outlined' ? 'outline' : null}
       {...props}>
-      {icon ? (
-        <FilterListIcon
-          width={'1.5rem'}
-          height={'1.5rem'}
-          className="fill-inherit"
-        />
-      ) : null}
+      {icon}
       {children}
     </Button>
   );

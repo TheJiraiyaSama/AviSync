@@ -6,7 +6,7 @@ interface CInputProps extends InputProps {
   inputLabel?: string;
 }
 
-const CInput = ({ id, className, inputLabel, ...props }: CInputProps) => {
+const CInput = ({ id, inputLabel, ...props }: CInputProps) => {
   return (
     <div className="grid w-full max-w-sm items-center gap-4">
       {inputLabel && inputLabel.length > 1 ? (
