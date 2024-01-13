@@ -32,7 +32,7 @@ const NavBar = ({
             ) : null}
             {/* Content */}
 
-            <div className="flex-between px-6">
+            <div className="flex-between px-6 bg-primary">
                 <Link href={"/"} className="flex items-center gap-1">
                     <Image
                         src="/assets/logos/logo_without_text.svg"
